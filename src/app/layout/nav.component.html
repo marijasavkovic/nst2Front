@@ -1,0 +1,44 @@
+<nav class="c-navbar">
+  <a class="c-navbar__brand" routerLink="/dashboard">
+    <img src="assets/images/logo.jpg" alt="University management system">
+  </a>
+  <button type="button" class="c-navbar__burger" [ngClass]="{'c-navbar__burger--active': navOpen}" (click)="navOpen = !navOpen"><span class="sr-only">Menu</span></button>
+  <div class="c-navbar__mobile-menu" [ngClass]="{'c-navbar__mobile-menu--active': navOpen}">
+    <div class="c-navbar__menu">
+      <ul class="c-navbar__nav">
+        <li class="c-navbar__item">
+          <a class="c-navbar__link" routerLink="/dashboard">{{"NAV.DASHBOARD" | translate}}</a>
+        </li>
+        <li class="c-navbar__item">
+          <a class="c-navbar__link" routerLink="/domain/employee/list">{{"NAV.EMPLOYEE" | translate}}</a>
+        </li>
+        <li class="c-navbar__item">
+          <a class="c-navbar__link" routerLink="/domain/course/list">{{"NAV.COURSE" | translate}}</a>
+        </li>
+        <li class="c-navbar__item">
+          <a class="c-navbar__link" routerLink="/domain/user/list">{{"NAV.USER" | translate}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="c-navbar__tools">
+      <!-- no visible language choice needed for now -->
+      <!--<ul class="c-navbar__nav c-navbar__nav&#45;&#45;lang">-->
+      <!--<li class="c-navbar__item">-->
+      <!--<a class="c-navbar__link" (click)="translateService.use('tn')">In Setsuana</a>-->
+      <!--</li>-->
+      <!--&lt;!&ndash; In English should be only visible if the Setsuana is active and vice versa &ndash;&gt;-->
+      <!--<li class="c-navbar__item" *ngIf="isSetsuana">-->
+      <!--<a class="c-navbar__link" (click)="translateService.use('en')">In English</a>-->
+      <!--</li>-->
+      <!--</ul>-->
+      <ul class="c-navbar__nav c-navbar__nav--user">
+        <li class="c-navbar__item">
+          <a class="c-navbar__link" (click)="logout()">
+            <span class="fa fa-close"></span>
+            {{'NAV-TOOLS.LOGOUT' | translate}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

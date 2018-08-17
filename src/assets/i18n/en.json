@@ -1,0 +1,11 @@
+{
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "EMPLOYEE": "Employee",
+    "COURSE": "Course",
+    "USER": "User"
+  },
+  "NAV-TOOLS": {
+    "LOGOUT": "Logout"
+  }
+}

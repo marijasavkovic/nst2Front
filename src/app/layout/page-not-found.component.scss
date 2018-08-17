@@ -1,0 +1,38 @@
+.c-404 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
+	@media (max-height: 768px) {
+		align-items: flex-start;
+	}
+	// .c-404__content
+	&__content {
+		display: flex;
+		flex-direction: column;
+	}
+	// .c-404__message
+	&__message {
+		font-size: 48px;
+		line-height: 1.2;
+		text-align: center;
+		margin-bottom: 7vh;
+		@media (max-width: 1024px) {
+			font-size: 28px;
+		}
+	}
+	// .c-404__logo
+	&__logo {
+		height: 93px;
+		margin-bottom: 10vh;
+	}
+	// .c-404__illustation
+	&__illustation {
+		height: 260px;
+	}
+}
+
+body {
+	overflow: hidden;
+}
