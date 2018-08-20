@@ -1,8 +1,8 @@
-import {RouterModule, Routes} from '@angular/router';
 import {EMPLOYEE_ROUTES} from './employee/employee.module';
-import {NgModule} from '@angular/core';
 import {COURSE_ROUTES} from './course/course.module';
 import {USER_ROUTES} from './user/user.module';
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
 
 export const routes: Routes = [
   {

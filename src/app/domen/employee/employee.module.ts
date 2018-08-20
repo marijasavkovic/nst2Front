@@ -1,10 +1,11 @@
-import {RouterModule, Routes} from '@angular/router';
 import {EmployeeListComponent} from './containers/employee-list.component';
-import {NgModule} from '@angular/core';
+import {EmployeeService} from './service/employee.service';
+import {SharedModule} from '../../shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {EmployeeService} from './service/employee.service';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
 
 export const EMPLOYEE_ROUTES: Routes = [
   {path: 'list', component: EmployeeListComponent}
@@ -15,7 +16,8 @@ export const EMPLOYEE_ROUTES: Routes = [
     RouterModule,
     ReactiveFormsModule,
     CommonModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    SharedModule
   ],
   declarations: [
     EmployeeListComponent

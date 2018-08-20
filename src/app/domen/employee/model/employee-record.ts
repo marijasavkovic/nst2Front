@@ -1,5 +1,4 @@
-import {serializable, serializeAll} from 'serializr';
-import isoDate from '../../../util/json/bt-serializr-types';
+import {serializeAll} from 'serializr';
 
 @serializeAll
 export class EmployeeRecord {
@@ -8,8 +7,6 @@ export class EmployeeRecord {
   name: string;
   surname: string;
   personalIdentificationNumber: string;
-  @serializable(isoDate())
-  dateOfEmployment: Date;
   title: string;
   vocation: string;
 

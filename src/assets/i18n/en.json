@@ -7,5 +7,10 @@
   },
   "NAV-TOOLS": {
     "LOGOUT": "Logout"
+  },
+  "EMPLOYEE":{
+    "LIST":{
+      "TITLE":"Employees"
+    }
   }
 }

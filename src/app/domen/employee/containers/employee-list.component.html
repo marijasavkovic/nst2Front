@@ -1,21 +1,64 @@
 <div>
-  <h3>
-    Client-side Sorting
-    <small>
-      <a href="https://github.com/swimlane/ngx-datatable/blob/master/demo/sorting/sorting-client.component.ts" target="_blank">
-        Source
-      </a>
-    </small>
-  </h3>
+  <h2>{{ "EMPLOYEE.LIST.TITLE" | translate }}</h2>
+
+  <div class='alert alert-danger' *ngIf='errorMessage'>{{errorMessage}}</div>
   <ngx-datatable
     class="material"
     [rows]="rows"
-    [columns]="columns"
     [sortType]="'multi'"
     [columnMode]="'force'"
     [headerHeight]="50"
     [footerHeight]="50"
-    [rowHeight]="50"
-    [scrollbarV]="true">
+    [rowHeight]="'auto'"
+    [limit]="10">
+    <ngx-datatable-column name="Name">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Name
+      </ng-template>
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <i class="btn btn-link" (click)="onSelect(row.id)">{{value}}</i>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Surname">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Surname
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Personal identification number">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Personal identification number
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Title">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Title
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Vocation">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Vocation
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <i class="fa fa-trash-o" style="font-size:20px" (click)="delete(row.id)" ></i>
+        &nbsp;
+        <i class="fa fa-edit" style="font-size:20px" (click)="edit(row.id)" ></i>
+      </ng-template>
+    </ngx-datatable-column>
   </ngx-datatable>
+
+
 </div>

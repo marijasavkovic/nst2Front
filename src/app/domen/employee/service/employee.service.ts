@@ -1,16 +1,16 @@
-import {Injectable} from '@angular/core';
+import {EmployeeResponse} from '../model/employee-response';
+import {environment} from '../../../environment/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {EmployeeResponse} from '../model/employee-response';
 import {deserialize} from 'serializr';
 import {map, tap} from 'rxjs/internal/operators';
-import {log} from 'util';
+import {Injectable} from '@angular/core';
 
 
 @Injectable()
 export class EmployeeService {
 
-  protected baseUrl = `/application/employee`;
+  protected baseUrl = `${environment}/application/employee`;
 
   constructor(private http: HttpClient) {
   }
@@ -21,7 +21,15 @@ export class EmployeeService {
     return this.http.get(url)
       .pipe(
         map(resJsonBody => deserialize(EmployeeResponse, resJsonBody)),
-        tap(data => log('****** ' + data))
+        tap(data => console.log('------ ' + data.data))
+      );
+  }
+
+  deleteEmployee(employeeId: string): Observable<any> {
+    const url = `${this.baseUrl}/${employeeId}`;
+    return this.http.delete(url)
+      .pipe(
+        tap(data => console.log('***** ' + data))
       );
   }
 }

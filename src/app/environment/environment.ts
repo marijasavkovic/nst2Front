@@ -1,2 +1,2 @@
 
-export const environment = 'https://localhost:80080/';
+export const environment = 'http://localhost:8080';
