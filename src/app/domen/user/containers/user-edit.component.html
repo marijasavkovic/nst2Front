@@ -1,0 +1,146 @@
+<div class="container">
+  <h1>{{ pageTitle | translate }}</h1>
+
+  <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+  &nbsp;
+  <form [formGroup]="form" novalidate
+        (ngSubmit)="save()">
+    <div class="form-group row">
+      <label for="username" class="col-2 col-form-label">{{ "USER.USERNAME" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="username"
+               type="text"
+               class="form-control"
+               formControlName="username">
+        <div
+          *ngIf="form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)">
+          <div
+            *ngIf="form.controls['username'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="password" class="col-2 col-form-label">{{ "USER.PASSWORD" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="password"
+               type="password"
+               class="form-control"
+               formControlName="password">
+        <div
+          *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)">
+          <div
+            *ngIf="form.controls['password'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="email" class="col-2 col-form-label">{{ "USER.EMAIL" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="email"
+               type="text"
+               class="form-control"
+               formControlName="email">
+        <div
+          *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)">
+          <div
+            *ngIf="form.controls['email'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+          <div
+            *ngIf="form.controls['email'].errors['pattern']">
+            {{ "FORM.ERROR.PATTERN.EMAIL" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="role" class="col-2 col-form-label">{{ "USER.ROLE" | translate }}</label>
+      <div class="col-sm-10">
+        <select id="role"
+                class="form-control"
+                formControlName="role">
+          <option
+            *ngFor="let role of roleKeys"
+            [value]="role">
+            {{getRoleValue(role)}}
+          </option>
+        </select>
+        <div
+          *ngIf="form.controls['role'].invalid && (form.controls['role'].dirty || form.controls['role'].touched)">
+          <div
+            *ngIf="form.controls['role'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">{{ "USER.EMPLOYEE" | translate }}</label>
+      <div class="col-sm-10" style="text-align:center;" *ngIf="!edit">
+        <input
+          class=""
+          id="filter"
+          type='text'
+          style='padding:8px;margin:15px auto;width:30%;border: none;border-bottom: 1px solid #ced4da;'
+          placeholder='Type to filter employees...'
+          (keyup)='updateFilter($event)'
+        />
+        <ngx-datatable
+          #table
+          class='material'
+          [columns]="columns"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="'auto'"
+          [rows]='rows'
+          [limit]="3"
+          [selectionType]="'single'"
+          (select)='onSelect($event)'
+        >
+        </ngx-datatable>
+        <button *ngIf="!add"
+                style="margin-top: 10px"
+                type="button"
+                class="btn btn-primary float-right"
+                (click)="cancelEditing()"
+                >
+          Cancel editing
+        </button>
+      </div>
+      <div class="col-sm-10" style="text-align:center;" *ngIf="edit">
+        <label class="col-2 col-form-label float-left">{{user.employee.name}} {{user.employee.surname}}</label>
+        <button type="button"
+                class="btn btn-primary float-right"
+                (click)="edit=false">
+          Edit employee
+        </button>
+      </div>
+    </div>
+
+    &nbsp;
+    <div class="form-group row">
+      <div class="col">
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="!form.valid">
+          <span class="fa fa-check"></span> Save
+        </button>
+        <button type="button"
+                class="btn"
+                (click)='cancel()'>
+          <span class="fa fa-remove"></span> Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

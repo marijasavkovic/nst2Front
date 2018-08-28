@@ -1,4 +1,15 @@
 {
+  "FORM": {
+    "ERROR": {
+      "REQUIRED": "This filed is required!",
+      "LENGTH": {
+        "PIN": "This field must contain exactly 13 characters!"
+      },
+      "PATTERN": {
+        "PIN": "This field must contain only numbers!"
+      }
+    }
+  },
   "NAV": {
     "DASHBOARD": "Dashboard",
     "EMPLOYEE": "Employee",
@@ -8,9 +19,76 @@
   "NAV-TOOLS": {
     "LOGOUT": "Logout"
   },
-  "EMPLOYEE":{
-    "LIST":{
-      "TITLE":"Employees"
-    }
+  "EMPLOYEE": {
+    "LIST": {
+      "TITLE": "Employees"
+    },
+    "VIEW": {
+      "TITLE": "Employee Details"
+    },
+    "ADD": {
+      "TITLE": "Add Employee"
+    },
+    "EDIT": {
+      "TITLE": "Edit Employee"
+    },
+    "NAME": "Name",
+    "SURNAME": "Surname",
+    "PIN": "Personal identification number",
+    "DATEOFBIRTH": "Date of birth",
+    "DATEOFEMPLOYMENT": "Date of employment",
+    "ADDRESS": "Address",
+    "TITLE": "Title",
+    "VOCATION": "Vocation"
+  },
+  "BUTTON": {
+    "EDIT": "Edit",
+    "BACK": "Back",
+    "ADD": "Add",
+    "SAVE": "Save",
+    "CANCEL": "Cancel"
+  },
+  "USER": {
+    "LIST": {
+      "TITLE": "Users"
+    },
+    "VIEW": {
+      "TITLE": "User Details"
+    },
+    "ADD": {
+      "TITLE": "Add User"
+    },
+    "EDIT": {
+      "TITLE": "Edit User"
+    },
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "EMAIL": "Email",
+    "ROLE": "Role",
+    "EMPLOYEE_NAME": "Employee name",
+    "EMPLOYEE_SURNAME": "Employee surname",
+    "EMPLOYEE": "Employee"
+  },
+  "COURSE": {
+    "LIST": {
+      "TITLE": "Courses"
+    },
+    "VIEW": {
+      "TITLE": "Course Details"
+    },
+    "ADD": {
+      "TITLE": "Add Course"
+    },
+    "EDIT": {
+      "TITLE": "Edit Course"
+    },
+    "NAME": "Name",
+    "ESPB": "Espb",
+    "LEVELOFSTUDIES": "Level of studies",
+    "DEPARTMENT": "Department",
+    "GOAL": "Goal",
+    "METHODOFEVALUATION": "Method of evaluation",
+    "LECTURERS": "Lecturers",
+    "THEMATICUNITS": "Thematic units"
   }
 }

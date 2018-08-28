@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <app-nav></app-nav>
     <div class="container-fluid">
       <div class="card o-layout--main">
-        <div class="card-body">
+        <div class="card-body scroll">
           <router-outlet></router-outlet>
         </div>
       </div>

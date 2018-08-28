@@ -1,0 +1,166 @@
+<div class="container" style="overflow: hidden">
+  <h1>{{ pageTitle | translate }}</h1>
+
+  <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+  &nbsp;
+  <form [formGroup]="form" novalidate
+        (ngSubmit)="save()">
+    <div class="form-group row">
+      <label for="name" class="col-2 col-form-label">{{ "COURSE.NAME" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="name"
+               type="text"
+               class="form-control"
+               formControlName="name">
+        <div
+          *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
+          <div
+            *ngIf="form.controls['name'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="espb" class="col-2 col-form-label">{{ "COURSE.ESPB" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="espb"
+               type="text"
+               class="form-control"
+               formControlName="espb">
+        <div
+          *ngIf="form.controls['espb'].invalid && (form.controls['espb'].dirty || form.controls['espb'].touched)">
+          <div
+            *ngIf="form.controls['espb'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="goal" class="col-2 col-form-label">{{ "COURSE.GOAL" | translate }}</label>
+      <div class="col-sm-10">
+        <textarea id="goal"
+                  class="form-control"
+                  formControlName="goal"></textarea>
+        <div
+          *ngIf="form.controls['goal'].invalid && (form.controls['goal'].dirty || form.controls['goal'].touched)">
+          <div
+            *ngIf="form.controls['goal'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="methodOfEvaluation" class="col-2 col-form-label">{{ "COURSE.METHODOFEVALUATION" | translate }}</label>
+      <div class="col-sm-10">
+        <textarea id="methodOfEvaluation"
+                  class="form-control"
+                  formControlName="methodOfEvaluation"></textarea>
+        <div
+          *ngIf="form.controls['methodOfEvaluation'].invalid && (form.controls['methodOfEvaluation'].dirty || form.controls['methodOfEvaluation'].touched)">
+          <div
+            *ngIf="form.controls['methodOfEvaluation'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="levelOfStudies" class="col-2 col-form-label">{{ "COURSE.LEVELOFSTUDIES" | translate }}</label>
+      <div class="col-sm-10">
+        <select id="levelOfStudies"
+                class="form-control"
+                formControlName="levelOfStudies">
+          <option
+            *ngFor="let levelOfStudies of levelsOfStudies"
+            [value]="levelOfStudies.id">
+            {{levelOfStudies.name}}
+          </option>
+        </select>
+        <div
+          *ngIf="form.controls['levelOfStudies'].invalid && (form.controls['levelOfStudies'].dirty || form.controls['levelOfStudies'].touched)">
+          <div
+            *ngIf="form.controls['levelOfStudies'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="department" class="col-2 col-form-label">{{ "COURSE.DEPARTMENT" | translate }}</label>
+      <div class="col-sm-10">
+        <select id="department"
+                class="form-control"
+                formControlName="department">
+          <option
+            *ngFor="let department of departments"
+            [value]="department.id">
+            {{department.name}}
+          </option>
+        </select>
+        <div
+          *ngIf="form.controls['department'].invalid && (form.controls['department'].dirty || form.controls['department'].touched)">
+          <div
+            *ngIf="form.controls['department'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">{{ "COURSE.LECTURERS" | translate }}</label>
+      <div class="col-sm-10">
+        <mat-tab-group [(selectedIndex)]="tabSelectedindex">
+          <mat-tab *ngFor="let teachingType of teachingTypes; let i = index"
+                   [label]="teachingType.name" >
+              &nbsp;
+              <p-pickList [source]="getList(i, true)" [target]="getList(i, false)"
+                          [responsive]="true" filterBy="name,surname" dragdrop="true" sourceHeader="All employees" targetHeader="Lecturers"
+                          [sourceStyle]="{'height':'150px'}" [targetStyle]="{'height':'150px'}">
+                <ng-template let-employee pTemplate="item" >
+                  <div class="ui-helper-clearfix">
+                    <div style="font-size:14px;float:right;margin:5px 5px 0 0">{{employee.name}} {{employee.surname}}
+                    </div>
+                  </div>
+                </ng-template>
+              </p-pickList>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">{{ "COURSE.THEMATICUNITS" | translate }}</label>
+      <div class="col-sm-10">
+
+      </div>
+    </div>
+
+    &nbsp;
+    <div class="form-group row">
+      <div class="col">
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="!form.valid">
+          <span class="fa fa-check"></span> Save
+        </button>
+        <button type="button"
+                class="btn"
+                (click)='cancel()'>
+          <span class="fa fa-remove"></span> Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

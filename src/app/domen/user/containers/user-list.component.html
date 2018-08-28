@@ -1,0 +1,70 @@
+<div>
+  <h2>{{ "USER.LIST.TITLE" | translate }}</h2>
+
+  <div class='alert alert-danger' *ngIf='errorMessage'>{{errorMessage}}</div>
+  <ngx-datatable
+    class="material"
+    [rows]="rows"
+    [sortType]="'multi'"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [limit]="10">
+    <ngx-datatable-column name="Username">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        {{ "USER.USERNAME" | translate }}
+      </ng-template>
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <i class="btn btn-link" (click)="onSelect(row.id)">{{value}}</i>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Email">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        {{ "USER.EMAIL" | translate }}
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Role">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        {{ "USER.ROLE" | translate }}
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Employee name">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        {{ "USER.EMPLOYEE_NAME" | translate }}
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Employee surname">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        {{ "USER.EMPLOYEE_SURNAME" | translate }}
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <i class="fa fa-trash-o" style="font-size:20px" (click)="delete(row.id)"></i>
+        &nbsp;
+        <i class="fa fa-edit" style="font-size:20px" (click)="edit(row.id)"></i>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+  &nbsp;
+  <div>
+    <div class="float-right">
+      <a [routerLink]="['/domain/user/new']" routerLinkActive="active"
+         class="btn btn-primary btn-md table-header__btn"
+         role="button">{{"BUTTON.ADD" | translate}}</a>
+    </div>
+  </div>
+</div>

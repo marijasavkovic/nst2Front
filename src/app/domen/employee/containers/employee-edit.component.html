@@ -1,0 +1,189 @@
+<div class="container">
+  <h1>{{ pageTitle | translate }}</h1>
+
+  <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+  &nbsp;
+  <form [formGroup]="form" novalidate
+        (ngSubmit)="save()">
+    <div class="form-group row">
+      <label for="name" class="col-2 col-form-label">{{ "EMPLOYEE.NAME" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="name"
+               type="text"
+               class="form-control"
+               formControlName="name">
+        <div
+          *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
+          <div
+            *ngIf="form.controls['name'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="surname" class="col-2 col-form-label">{{ "EMPLOYEE.SURNAME" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="surname"
+               type="text"
+               class="form-control"
+               formControlName="surname">
+        <div
+          *ngIf="form.controls['surname'].invalid && (form.controls['surname'].dirty || form.controls['surname'].touched)">
+          <div
+            *ngIf="form.controls['surname'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="pin" class="col-2 col-form-label">{{ "EMPLOYEE.PIN" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="pin"
+               type="text"
+               class="form-control"
+               formControlName="personalIdentificationNumber">
+        <div
+          *ngIf="form.controls['personalIdentificationNumber'].invalid && (form.controls['personalIdentificationNumber'].dirty || form.controls['personalIdentificationNumber'].touched)">
+          <div
+            *ngIf="form.controls['personalIdentificationNumber'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+          <div
+            *ngIf="form.controls['personalIdentificationNumber'].errors['minlength']">
+            {{ "FORM.ERROR.LENGTH.PIN" | translate }}
+          </div>
+          <div
+            *ngIf="form.controls['personalIdentificationNumber'].errors['maxlength']">
+            {{ "FORM.ERROR.LENGTH.PIN" | translate }}
+          </div>
+          <div
+            *ngIf="form.controls['personalIdentificationNumber'].errors['pattern']">
+            {{ "FORM.ERROR.PATTERN.PIN" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="dateOfBirth" class="col-2 col-form-label">{{ "EMPLOYEE.DATEOFBIRTH" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="dateOfBirth"
+               type="text"
+               class="form-control"
+               formControlName="dateOfBirth"
+               [bsConfig]="{dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue', showWeekNumbers: false}"
+               bsDatepicker
+        >
+        <div
+          *ngIf="form.controls['dateOfBirth'].invalid && (form.controls['dateOfBirth'].dirty || form.controls['dateOfBirth'].touched)">
+          <div
+            *ngIf="form.controls['dateOfBirth'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="dateOfEmployment" class="col-2 col-form-label">{{ "EMPLOYEE.DATEOFEMPLOYMENT" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="dateOfEmployment"
+               type="text"
+               class="form-control"
+               formControlName="dateOfEmployment"
+               [bsConfig]="{dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue', showWeekNumbers: false}"
+               bsDatepicker>
+        <div
+          *ngIf="form.controls['dateOfEmployment'].invalid && (form.controls['dateOfEmployment'].dirty || form.controls['dateOfEmployment'].touched)">
+          <div
+            *ngIf="form.controls['dateOfEmployment'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="address" class="col-2 col-form-label">{{ "EMPLOYEE.ADDRESS" | translate }}</label>
+      <div class="col-sm-10">
+        <input id="address"
+               type="text"
+               class="form-control"
+               formControlName="address">
+        <div
+          *ngIf="form.controls['address'].invalid && (form.controls['address'].dirty || form.controls['address'].touched)">
+          <div
+            *ngIf="form.controls['address'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="title" class="col-2 col-form-label">{{ "EMPLOYEE.TITLE" | translate }}</label>
+      <div class="col-sm-10">
+        <select id="title"
+                class="form-control"
+                formControlName="title">
+          <option
+            *ngFor="let title of titleKeys"
+            [value]="title">
+            {{getTitleValue(title)}}
+          </option>
+        </select>
+        <div
+          *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)">
+          <div
+            *ngIf="form.controls['title'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="vocation" class="col-2 col-form-label">{{ "EMPLOYEE.VOCATION" | translate }}</label>
+      <div class="col-sm-10">
+        <select id="vocation"
+                class="form-control"
+                formControlName="vocation">
+          <option
+            *ngFor="let vocation of vocationKeys"
+            [value]="vocation">
+            {{getVocationValue(vocation)}}
+          </option>
+        </select>
+        <div
+          *ngIf="form.controls['vocation'].invalid && (form.controls['vocation'].dirty || form.controls['vocation'].touched)">
+          <div
+            *ngIf="form.controls['vocation'].errors['required']">
+            {{ "FORM.ERROR.REQUIRED" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+    &nbsp;
+    <div class="form-group row">
+      <div class="col">
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="!form.valid">
+          <span class="fa fa-check"></span> Save
+        </button>
+        <button type="button"
+                class="btn"
+                (click)='cancel()'>
+          <span class="fa fa-remove"></span> Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

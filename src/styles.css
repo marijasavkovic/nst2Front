@@ -1,7 +1,45 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 .ngx-datatable.material.single-selection .datatable-body-row.active,
 .ngx-datatable.material.single-selection .datatable-body-row.active .datatable-row-group,
 .ngx-datatable.material.multi-selection .datatable-body-row.active,
 .ngx-datatable.material.multi-selection .datatable-body-row.active .datatable-row-group, .ngx-datatable.material.multi-click-selection .datatable-body-row.active,
 .ngx-datatable.material.multi-click-selection .datatable-body-row.active .datatable-row-group {
-  background-color: inherit !important;
+  background-color: #43868f !important;
+}
+
+.btn-primary{
+  background-color: #43868f !important;
+}
+
+.btn-link{
+  color: #43868f !important;
+}
+
+.theme-dark-blue .bs-datepicker-head {
+  background-color: #43868f !important; }
+
+.ui-button {
+  background-color: #43868f !important;
+}
+
+.ui-picklist {
+  width: 100% !important;
+}
+
+.card-body{
+  height: 800px !important;
+  overflow: scroll !important;
+  overflow-x:hidden !important;
+}
+.ui-picklist .ui-picklist-list .ui-picklist-item.ui-state-highlight{
+  background-color: #43868f !important;
+}
+
+.mat-ink-bar {
+  background-color: #43868f !important;
+}
+
+.ui-picklist .ui-picklist-filter-container .ui-picklist-filter-icon {
+  color: #43868f !important;
 }

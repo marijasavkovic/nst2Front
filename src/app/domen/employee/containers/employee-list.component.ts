@@ -16,19 +16,8 @@ export class EmployeeListComponent implements OnInit {
 
   rows = [];
 
-  // columns = [
-  //   {prop: 'name'},
-  //   {name: 'Surname'},
-  //   {name: 'Personal identification number'},
-  //   {name: 'Title'},
-  //   {name: 'Vocation'},
-  //   {name: 'button', cellTemplate: this.deleteBtn, flexGrow: 1}
-  // ];
-
   constructor(private employeeService: EmployeeService,
-              private router: Router,
-              private fb: FormBuilder,
-              private translate: TranslateService) {
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -49,6 +38,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   edit(id: string) {
+    this.router.navigate(['/domain/employee/edit', id]);
   }
 
   private navigateToList(): void {
@@ -56,5 +46,6 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onSelect(id: string) {
+    this.router.navigate(['/domain/employee/view', id]);
   }
 }

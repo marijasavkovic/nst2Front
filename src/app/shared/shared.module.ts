@@ -2,10 +2,17 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TranslateModule} from '@ngx-translate/core';
 import {MomentModule} from 'angular2-moment';
+import {BsDatepickerModule, TabsModule} from 'ngx-bootstrap';
+import {TreeviewModule} from 'ngx-treeview';
+import {PickListModule} from 'primeng/primeng';
 
 const vendorModules = [
   TranslateModule,
-  MomentModule
+  MomentModule,
+  BsDatepickerModule,
+  TreeviewModule,
+  TabsModule,
+  PickListModule
 ];
 
 const sharedModules = [

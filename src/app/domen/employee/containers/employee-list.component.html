@@ -13,7 +13,7 @@
     [limit]="10">
     <ngx-datatable-column name="Name">
       <ng-template let-column="column" ngx-datatable-header-template>
-        Name
+        {{ "EMPLOYEE.NAME" | translate }}
       </ng-template>
       <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
         <i class="btn btn-link" (click)="onSelect(row.id)">{{value}}</i>
@@ -21,7 +21,7 @@
     </ngx-datatable-column>
     <ngx-datatable-column name="Surname">
       <ng-template let-column="column" ngx-datatable-header-template>
-        Surname
+        {{ "EMPLOYEE.SURNAME" | translate }}
       </ng-template>
       <ng-template let-value="value" ngx-datatable-cell-template>
         {{value}}
@@ -29,7 +29,7 @@
     </ngx-datatable-column>
     <ngx-datatable-column name="Personal identification number">
       <ng-template let-column="column" ngx-datatable-header-template>
-        Personal identification number
+        {{ "EMPLOYEE.PIN" | translate }}
       </ng-template>
       <ng-template let-value="value" ngx-datatable-cell-template>
         {{value}}
@@ -37,7 +37,7 @@
     </ngx-datatable-column>
     <ngx-datatable-column name="Title">
       <ng-template let-column="column" ngx-datatable-header-template>
-        Title
+        {{ "EMPLOYEE.TITLE" | translate }}
       </ng-template>
       <ng-template let-value="value" ngx-datatable-cell-template>
         {{value}}
@@ -45,7 +45,7 @@
     </ngx-datatable-column>
     <ngx-datatable-column name="Vocation">
       <ng-template let-column="column" ngx-datatable-header-template>
-        Vocation
+        {{ "EMPLOYEE.VOCATION" | translate }}
       </ng-template>
       <ng-template let-value="value" ngx-datatable-cell-template>
         {{value}}
@@ -53,12 +53,18 @@
     </ngx-datatable-column>
     <ngx-datatable-column name="">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <i class="fa fa-trash-o" style="font-size:20px" (click)="delete(row.id)" ></i>
+        <i class="fa fa-trash-o" style="font-size:20px" (click)="delete(row.id)"></i>
         &nbsp;
-        <i class="fa fa-edit" style="font-size:20px" (click)="edit(row.id)" ></i>
+        <i class="fa fa-edit" style="font-size:20px" (click)="edit(row.id)"></i>
       </ng-template>
     </ngx-datatable-column>
   </ngx-datatable>
-
-
+  &nbsp;
+  <div>
+    <div class="float-right">
+      <a [routerLink]="['/domain/employee/new']" routerLinkActive="active"
+         class="btn btn-primary btn-md table-header__btn"
+         role="button">{{"BUTTON.ADD" | translate}}</a>
+    </div>
+  </div>
 </div>

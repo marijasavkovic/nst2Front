@@ -11,6 +11,11 @@ import {AppContentComponent} from './layout/content.component';
 import {PageNotFoundComponent} from './layout/page-not-found.component';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {BsDatepickerModule, TabsModule} from 'ngx-bootstrap';
+import {TreeviewModule} from 'ngx-treeview';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {PickListModule} from 'primeng/primeng';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -20,6 +25,11 @@ const externalModules = [
   BrowserModule,
   HttpClientModule,
   ReactiveFormsModule,
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+  MatButtonModule,
+  MatCheckboxModule,
+  PickListModule,
 
   TranslateModule.forRoot({
     loader: {
@@ -28,6 +38,9 @@ const externalModules = [
       deps: [HttpClient]
     }
   }),
+  BsDatepickerModule.forRoot(),
+  TreeviewModule.forRoot(),
+  TabsModule.forRoot()
 ];
 
 const appModules = [

@@ -6,9 +6,14 @@ import {CommonModule} from '@angular/common';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
+import {EmployeeViewComponent} from './containers/employee-view.component';
+import {EmployeeEditComponent} from './containers/employee-edit.component';
 
 export const EMPLOYEE_ROUTES: Routes = [
-  {path: 'list', component: EmployeeListComponent}
+  {path: 'list', component: EmployeeListComponent},
+  {path: 'view/:employeeId', component: EmployeeViewComponent},
+  {path: 'edit/:employeeId', component: EmployeeEditComponent},
+  {path: 'new', component: EmployeeEditComponent,  data: { isNew: true }}
 ];
 
 @NgModule({
@@ -20,7 +25,9 @@ export const EMPLOYEE_ROUTES: Routes = [
     SharedModule
   ],
   declarations: [
-    EmployeeListComponent
+    EmployeeListComponent,
+    EmployeeViewComponent,
+    EmployeeEditComponent
   ],
   providers: [
     EmployeeService
